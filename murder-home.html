@@ -3,30 +3,27 @@
   <head>
     <script src="./webpagescripts.js"></script>
   	<style>
-    * {background-color: black} 
-		a.buttonG { padding: 0.6vh 0.6vw; border: 0.1vh outset buttonborder; border-radius: 1vh;
-			color: #00FF00; background-color: #000000; text-decoration: none; 
-			}
+	* {background-color: black} 
+	:root { color-scheme: dark; background-color:#000000;color: #FFFFFF; }
+	/* Button Colours */
+	a.buttonG { color: #00FF00; }
+	a.buttonY { color: #FFFF00; }
+	a.buttonGY { color: #AAFF00; }
+	a.buttonR { color: #FF0000; }
+	a.buttonW { color: #FFFFFF; }
+	/* Button styles */
+	a.buttonss { 
+		padding: 0.8vh 0.8vw; border: 0.1vh outset buttonborder; border-radius: 1vh;
+		background-color: #202020; text-decoration: none; margin:2px; line-height: 2.2;
+	}
 
-		a.buttonW { padding: 0.6vh 0.6vw; border: 0.1vh outset buttonborder; border-radius: 1vh;
-			color: #FFFFFF; background-color: #000000; text-decoration: none; 
-			}
-
-		a.buttonR { padding: 0.6vh 0.6vw; border: 0.1vh outset buttonborder; border-radius: 1vh;
-			color: #FF0000; background-color: #000000; text-decoration: none; 
-			}
-
-		a.buttonY { padding: 0.6vh 0.6vw; border: 0.1vh outset buttonborder; border-radius: 1vh;
-			color: #FFFF00; background-color: #000000; text-decoration: none; 
-			}
-
-		/* Base styles */
-		body { font-size: 35px; }
-		/* Larger screens */
-		@media (min-width: 1200px) { body { font-size: 45px; } } 
-		/* Smaller tablets and mobiles */
-		@media (max-width: 900px) { body { font-size: 30px; } }
-		input.url {font-size: 30px;}
+	/* Base styles */
+	body { font-size: 35px; background-color:#000000; color: #FFFFFF; margin-left:100px; margin-right:100px; }
+	/* Larger screens */
+	@media (min-width: 1200px) { body { font-size: 45px; background-color:#000000; color: #FFFFFF; } } 
+	/* Smaller tablets and mobiles */
+	@media (max-width: 900px) { body { font-size: 30px; background-color:#000000; color: #FFFFFF; } }
+	input.url {font-size: 30px;}
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -36,21 +33,21 @@
     <center>
 	<h2><span style="color: #FFFF00">Who will die tonight?</span></h2>
 	<p><b>Click & Drag to Scroll</b><br/>VR Users use the top Right Trigger button to Click</p><br/>
-	<!-- <a href="https://cytu.be/r/firerat" class="buttonR">Fire's Room (watch together)</a> -->
+	<!-- <a href="https://cytu.be/r/firerat" class="buttonR buttonss">Fire's Room (watch together)</a> -->
 	<p>Click This button to join the room</p>
-	<a href="https://hyperbeam.com/i/mz3Cukvl" class="buttonY">Fire's Room (HyperBeam)</a><br/>
+	<a href="https://hyperbeam.com/i/mz3Cukvl" class="buttonY buttonss">Fire's Room (HyperBeam)</a><br/>
 	<p>You must Click the box to confirm you are at least 13 Years old before you can continue</p>
 	<img src="https://murder-party.firer.at/assets/hyperbeam.png" alt="Example" style="width:721;height:673;">
 <!-- 	<a href="https://sidequestvr.github.io/SideQuest.Banter.Spaces/screen-cast/?sid=4202024" class="buttonR">Watch ScreenCast</a> -->
   <br/><br/>
-<!-- 	<a href="https://jackbox.tv/" class="buttonG">JackBox.tv</a>
-	<a href="https://papas.tv/" class="buttonG">Papas Quiz</a>
+<!-- 	<a href="https://jackbox.tv/" class="buttonG buttonss">JackBox.tv</a>
+	<a href="https://papas.tv/" class="buttonG buttonss">Papas Quiz</a>
   <br/><br/> -->
   <br/><br/>
 	<details>
 		<summary>Click to expand:</summary>
-			<br/><a href="https://bantervr.com/" class="buttonR">Banter Events</a>	
-			<br/><a href="https://firer.at/pages/games.html" class="buttonG">Go to Fires Games</a>
+			<br/><a href="https://bantervr.com/" class="buttonR buttonss">Banter Events</a>	
+			<br/><a href="https://firer.at/pages/games.html" class="buttonG buttonss">Go to Fires Games</a>
 	<p>Or Enter a URL here:<br/>
   <form id="form" method="get">
   <input type="url" id="text" value="https://" class="url" size="40" placeholder="https://bantervr.com" onchange="document.getElementById('form').action = this.value;" />
