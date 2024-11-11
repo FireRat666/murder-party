@@ -6,15 +6,39 @@
     <meta property="og:description" content="Who Murdered Gemchick">
     <meta property="og:image" content="https://cdn.sidequestvr.com/file/628989/background-chalk-824x1024-1.png">  
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  	<style>
+      * {background-color: black} 
+      :root { color-scheme: dark; background-color:#000000;color: #FFFFFF; }
+      /* Button Colours */
+      a.buttonG { color: #00FF00; }
+      a.buttonY { color: #FFFF00; }
+      a.buttonGY { color: #AAFF00; }
+      a.buttonR { color: #FF0000; }
+      a.buttonW { color: #FFFFFF; }
+      /* Button styles */
+      a.buttonss { 
+        padding: 0.8vh 0.8vw; border: 0.1vh outset buttonborder; border-radius: 1vh;
+        background-color: #202020; text-decoration: none; margin:2px; line-height: 2.2;
+      }
+
+      /* Base styles */
+      body { font-size: 35px; background-color:#000000; color: #FFFFFF; margin-left:100px; margin-right:100px; }
+      /* Larger screens */
+      @media (min-width: 1200px) { body { font-size: 45px; background-color:#000000; color: #FFFFFF; } } 
+      /* Smaller tablets and mobiles */
+      @media (max-width: 900px) { body { font-size: 30px; background-color:#000000; color: #FFFFFF; } }
+      input.url {font-size: 30px;}
+    </style>
+    <title>Murder Home</title>
   </head>
   <body><div style="display: none;">
-   <a-scene sq-friendpositionjoinallowed="false" sq-guestsallowed="enabled: false" sq-portalsenabled="false" sq-refreshrate="rate:90" sq-spawnpoint="position: 0 0.1 0;" sq-maxoccupancy="number: 30"
+  <a-scene sq-friendpositionjoinallowed="false" sq-guestsallowed="enabled: false" sq-portalsenabled="false" sq-refreshrate="rate:90" sq-spawnpoint="position: 0 0.1 0;" sq-maxoccupancy="number: 30"
    embedded>
     
 
     <!-- Screen for Movies/Screencast -->     
   <!--    -->   <script src="https://firer.at/scripts/firescreenv2.js" mipmaps="0" pixelsperunit="1300" 
-                website="https://murder-party.firer.at/murder-home.html?1"
+                website="https://murder-party.firer.at/?1"
                 position="-1 4.7 12" rotation="0 0 0" scale="7 7 1" volumelevel="0.25" backdrop-color="0 0 0 0.9"
                 button-color="1 0 0 1" volup-color="0 1 0 1" voldown-color="1 1 0 1" mute-color="1 1 1 1" 
                 hand-controls="true" width="1280" height="720" ></script>   <!--   --> 
@@ -35,18 +59,42 @@
 <!--     -->
 
      <script src="https://firer.at/scripts/firescreenv2.js" mipmaps="1" pixelsperunit="1300" castmode="false" backdrop="true" 
-              website="https://murder-party.firer.at/murder-home.html?1"
+              website="https://murder-party.firer.at/?1"
               position="5.7 1.8 4" scale="1 1 1" volumelevel="0.25" backdrop-color="0 0 0 0.9"  
               button-color="1 0 0 1" volup-color="0 1 0 1" voldown-color="1 1 0 1" mute-color="1 1 1 1" 
-              hand-controls="false" width="1024" height="576"
-              icon-mute-url="https://firer.at/files/VolumeMute.png" 
-              icon-volup-url="https://firer.at/files/VolumeHigh.png"
-              icon-voldown-url="https://firer.at/files/VolumeLow.png"
-              icon-direction-url="https://firer.at/files/Arrow.png"
-              custom-button01-url="false" custom-button01-text="Example Text"
-              custom-button02-url="false" custom-button02-text="Some website!"
-              custom-button03-url="false" custom-button03-text="Another website"></script> <!--   --> 
-     </a-scene>
+              hand-controls="false" width="1024" height="576"></script> <!--   --> 
+  </a-scene>
+    <div>
+    <center>
+    <h2><span style="color: #FFFF00">Who will die tonight?</span></h2>
+    <p><b>Click & Drag to Scroll</b><br/>VR Users use the top Right Trigger button to Click</p>
+    <!-- <a href="https://cytu.be/r/firerat" class="buttonR buttonss">Fire's Room (watch together)</a> -->
+    <p>Click This button to join the room<br/>
+    <a href="#" id="hyperBeam" class="buttonY buttonss">Fire's Room (Cytube)</a><br/>
+    <span style="color: #c2c2c2; font-size: 30px; ">You must <u>Click the box to confirm that you are <br>at least 13 Years old</u> before you can continue</span><br/>
+    <img src="https://murder-party.firer.at/assets/hyperbeam01.png" alt="Example" style="width:721;height:673;"><br/>
+    <span style="color: #c2c2c2; font-size: 30px; ">Click This Button in the Bottom Right for Full Screen</span>
+    <img src="https://murder-party.firer.at/assets/hyperbeam02.png" alt="Example" style="height:300;"><br/>
+    <span style="color: #c2c2c2; font-size: 30px; ">Click This Button in the Bottom Right to Hide Chat while Full Screen</span>
+    <img src="https://murder-party.firer.at/assets/hyperbeam03.png" alt="Example" style="height:400;"></p>
+    <!-- 	<a href="https://sidequestvr.github.io/SideQuest.Banter.Spaces/screen-cast/?sid=4202024" class="buttonR">Watch ScreenCast</a> -->
+    <details>
+      <summary>Click to expand:</summary>
+        <br/><a href="https://firer.at/pages/games.html" class="buttonG buttonss">Go to Fires Games</a>
+    <p>Or Enter a URL here:<br/>
+    <form id="form" method="get">
+      <input type="url" id="text" value="https://" class="url" size="40" placeholder="https://bantervr.com" onchange="document.getElementById('form').action = this.value;" />
+      <input type="button" id="btn" value="Go" class="url" 
+            onclick="window.open(document.getElementById('text').value);" />
+    </form>
+    </p>
+    </details>
+    <br/><br/><br/>
+    </center>
+    </div>
+    <script> // Generate a random number between 1 and 1000, Construct the new URL with the random number Update the href attribute of the link
+      document.getElementById('hyperBeam').href = `https://firer.at/redirects/hyper.html?${Math.floor(Math.random() * 1000) + 1}`;
+    </script>
     </div>
   </body>
 </html>
