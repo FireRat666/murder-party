@@ -68,7 +68,7 @@
     <p><b>Click & Drag to Scroll</b><br/>VR Users use the top Right Trigger button to Click</p>
     <!-- <a href="https://cytu.be/r/firerat" class="buttonR buttonss">Fire's Room (watch together)</a> -->
     <p>Click This button to join the room<br/>
-    <a href="#" id="hyperBeam" class="buttonY buttonss">Fire's Room (Cytube)</a><br/>
+    <a href="#" id="hyperBeam" class="buttonY buttonss" onclick="handleClick(event)">Fire's Room (Cytube)</a><br/>
     <span style="color: #c2c2c2; font-size: 30px; ">You must <u>Click the box to confirm that you are <br>at least 13 Years old</u> before you can continue</span><br/>
     <img src="https://murder-party.firer.at/assets/hyperbeam01.png" alt="Example" style="width:721;height:673;"><br/>
     <span style="color: #c2c2c2; font-size: 30px; ">Click This Button in the Bottom Right for Full Screen</span>
@@ -90,8 +90,40 @@
     <br/><br/><br/>
     </center>
     </div>
-    <script> // Generate a random number between 1 and 1000, Construct the new URL with the random number Update the href attribute of the link
-      document.getElementById('hyperBeam').href = `https://firer.at/redirects/hyper.html?${Math.floor(Math.random() * 1000) + 1}`;
+    <script>
+    if(window.isBanter) {
+      let thiswaitingforunity = true; var delaythinginterval;
+      if (thiswaitingforunity) { 
+        delaythinginterval = setInterval(function() {
+          if (BS.BanterScene.GetInstance().unityLoaded) { 
+            thiswaitingforunity = false; clearInterval(delaythinginterval); 
+            setTimeout(async () => {
+              let firebrowserthing = await BS.BanterScene.GetInstance().Find(`MyBrowser1`);
+              firebrowserthing.On("browser-message", (e) => {
+                console.log("Received message from the webpage:", e.detail);
+                if (e.detail === "hyperbeamclick") {
+                  setTimeout(async () => {
+                    let thisfirebrowser = firebrowserthing.GetComponent(BS.ComponentType.BanterBrowser);
+                    thisfirebrowser.RunActions(JSON.stringify({"actions": [{ "actionType": "postmessage","strparam1": "const checkbox = document.querySelector(`.p-checkbox-box[role='checkbox']`); const joinButton = document.querySelector('.footer_3Yiou .joinBtn_1TAU6'); if (checkbox) checkbox.click(); if (joinButton) { const observer = new MutationObserver(() => { if (!joinButton.classList.contains('p-disabled')) { joinButton.click(); observer.disconnect(); setTimeout(() => { const skipButton = document.querySelector('.dialog-secondary-btn'); if (skipButton) skipButton.click(); }, 3000); } }); observer.observe(joinButton, { attributes: true, attributeFilter: ['class'] }); };" }]}));
+                    setTimeout(async () => {
+                      thisfirebrowser.RunActions(JSON.stringify({"actions": [{ "actionType": "postmessage","strparam1": "var fullscreenButton = document.querySelector(`.p-button.p-component.tu-button.btn-tertiary.btn_2YRyp svg path[d^='M3 3h6.429']`); if (fullscreenButton) { fullscreenButton.closest('button').click(); } setTimeout(async () => { var chatButton = document.querySelector(`.p-button.p-component.tu-button.btn-tertiary.fsChatBtn_2cCyy svg path[d^='M22 22h-2V2h2v20zM2 11h12.17']`); if (chatButton) { chatButton.closest('button').click(); } }, 3500);" }]}));
+                    }, 3000);
+                  }, 3000);
+                }
+              });
+            }, 3000);
+          };
+        }, 1000); 
+      };
+    }
+
+    function handleClick(event) {
+      event.preventDefault(); // Prevent the default link behavior (navigation)
+      window.bantermessage("hyperbeamclick");
+      console.log("Message sent to the space:");
+      const newUrl = `https://firer.at/redirects/hyper.html?${Math.floor(Math.random() * 1000) + 1}`;
+      window.location.href = newUrl;  // Navigate to the new URL
+    }
     </script>
   </body>
 </html>
