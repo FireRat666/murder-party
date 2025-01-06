@@ -34,67 +34,32 @@
   <script>
     if(window.isBanter) { 
       let awaitingforunity = true;
-  var murderinterval;
-  if (awaitingforunity) { murderinterval = setInterval(async function() {
-    if (BS.BanterScene.GetInstance().unityLoaded) { awaitingforunity = false; clearInterval(murderinterval);
-      console.log(`Thingy Loading!`);
-      // SetSettings - Set settings for the current space like spawn position, portals, guest access etc.
-      const msettings = await new BS.SceneSettings();
-      // settings.EnableDevTools = true;
-      msettings.EnableTeleport = true;
-      msettings.EnableForceGrab = false;
-      msettings.EnableSpiderMan = true;
-      msettings.EnablePortals = false;
-      msettings.EnableGuests = false;
-      msettings.EnableQuaternionPose = false;
-      msettings.EnableControllerExtras = false;
-      msettings.EnableFriendPositionJoin = false;
-      msettings.EnableDefaultTextures = true;
-      msettings.EnableAvatars = true;
-      // settings.MaxOccupancy = 30;
-      // settings.RefreshRate = 72;
-      // settings.ClippingPlane = new BS.Vector2(0.02, 1500);
-      msettings.SpawnPoint = new BS.Vector4(0, 0.1, 0, 90);
-      BS.BanterScene.GetInstance().SetSettings(msettings);
-      console.log("index.html finish setting settings for scene");
-      setTimeout(() => { BS.BanterScene.GetInstance().SetSettings(msettings); BS.BanterScene.GetInstance().TeleportTo({x: 0, y: 0.3, z: 0}, 0, true); }, 2000);
-
-    };
-  }, 1000); };
-      // console.log(`Thingy Starting!`);
-      // function waitForUnityIsLoadedM(callback) {
-      //   const murderInterval = setInterval(() => {
-      //     console.log(`Thingy Waiting!`);
-      //     if (BS.BanterScene.GetInstance().unityLoaded) {
-      //       clearInterval(murderInterval); // Stop checking
-      //       callback(); // Execute the callback
-      //     }
-      //   }, 500); // Check every 500ms
-      // };
-      
-      // waitForUnityIsLoadedM( async () => {
-      //   console.log(`Thingy Loading!`);
-      //   // SetSettings - Set settings for the current space like spawn position, portals, guest access etc.
-      //   const msettings = await new BS.SceneSettings();
-      //   // settings.EnableDevTools = true;
-      //   msettings.EnableTeleport = true;
-      //   msettings.EnableForceGrab = false;
-      //   msettings.EnableSpiderMan = true;
-      //   msettings.EnablePortals = false;
-      //   msettings.EnableGuests = false;
-      //   msettings.EnableQuaternionPose = false;
-      //   msettings.EnableControllerExtras = false;
-      //   msettings.EnableFriendPositionJoin = false;
-      //   msettings.EnableDefaultTextures = true;
-      //   msettings.EnableAvatars = true;
-      //   // settings.MaxOccupancy = 30;
-      //   // settings.RefreshRate = 72;
-      //   // settings.ClippingPlane = new BS.Vector2(0.02, 1500);
-      //   msettings.SpawnPoint = new BS.Vector4(0, 0.1, 0, 90);
-      //   BS.BanterScene.GetInstance().SetSettings(msettings);
-      //   console.log("index.html finish setting settings for scene");
-      //   setTimeout(() => { BS.BanterScene.GetInstance().SetSettings(msettings); BS.BanterScene.GetInstance().TeleportTo({x: 0, y: 0.3, z: 0}, 0, true); }, 2000);
-      // });
+      var murderinterval;
+      if (awaitingforunity) { murderinterval = setInterval(async function() {
+        if (BS.BanterScene.GetInstance().unityLoaded) { awaitingforunity = false; clearInterval(murderinterval);
+          console.log(`Thingy Loading!`);
+          // SetSettings - Set settings for the current space like spawn position, portals, guest access etc.
+          const msettings = await new BS.SceneSettings();
+          // msettings.EnableDevTools = true;
+          msettings.EnableTeleport = true;
+          msettings.EnableForceGrab = false;
+          msettings.EnableSpiderMan = true;
+          msettings.EnablePortals = false;
+          msettings.EnableGuests = false;
+          msettings.EnableQuaternionPose = false;
+          msettings.EnableControllerExtras = false;
+          msettings.EnableFriendPositionJoin = false;
+          msettings.EnableDefaultTextures = true;
+          msettings.EnableAvatars = true;
+          // msettings.MaxOccupancy = 30;
+          // msettings.RefreshRate = 72;
+          // msettings.ClippingPlane = new BS.Vector2(0.02, 1500);
+          msettings.SpawnPoint = new BS.Vector4(0, 0.1, 0, 90);
+          BS.BanterScene.GetInstance().SetSettings(msettings);
+          console.log("index.html finish setting settings for scene");
+          setTimeout(() => { BS.BanterScene.GetInstance().SetSettings(msettings); BS.BanterScene.GetInstance().TeleportTo({x: 0, y: 0.3, z: 0}, 0, true); }, 2000);
+        };
+      }, 1000); };
     }
   </script>
   <body>
