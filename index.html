@@ -33,8 +33,10 @@
   </head>
   <script>
     if(window.isBanter) { 
+      console.log(`Thingy Starting!`);
       function waitForUnityIsLoadedM(callback) {
         const murderInterval = setInterval(() => {
+          console.log(`Thingy Waiting!`);
           if (BS.BanterScene.GetInstance().unityLoaded) {
             clearInterval(murderInterval); // Stop checking
             callback(); // Execute the callback
