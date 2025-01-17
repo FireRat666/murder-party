@@ -37,16 +37,12 @@
           console.log(`Thingy Loading!`);
           // SetSettings - Set settings for the current space like spawn position, portals, guest access etc.
           const msettings = await new BS.SceneSettings();
-          // msettings.EnableDevTools = true;
           msettings.EnableTeleport = true;
           msettings.EnableForceGrab = false;
           msettings.EnableSpiderMan = true;
-          msettings.EnablePortals = false;
+          msettings.EnablePortals = true;
           msettings.EnableGuests = false;
-          msettings.EnableQuaternionPose = false;
-          msettings.EnableControllerExtras = false;
           msettings.EnableFriendPositionJoin = false;
-          msettings.EnableDefaultTextures = true;
           msettings.EnableAvatars = true;
           // msettings.MaxOccupancy = 30;
           // msettings.RefreshRate = 72;
