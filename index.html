@@ -32,11 +32,8 @@
     <title>Murder Home</title>
   </head>
   <script>
-    if(window.isBanter) { 
-      let awaitingforunity = true;
-      var murderinterval;
-      if (awaitingforunity) { murderinterval = setInterval(async function() {
-        if (BS.BanterScene.GetInstance().unityLoaded) { awaitingforunity = false; clearInterval(murderinterval);
+    if(window.isBanter) {
+      BS.BanterScene.GetInstance().On("unity-loaded", async () => {
           console.log(`Thingy Loading!`);
           // SetSettings - Set settings for the current space like spawn position, portals, guest access etc.
           const msettings = await new BS.SceneSettings();
@@ -58,9 +55,9 @@
           BS.BanterScene.GetInstance().SetSettings(msettings);
           console.log("index.html finish setting settings for scene");
           setTimeout(() => { BS.BanterScene.GetInstance().SetSettings(msettings); BS.BanterScene.GetInstance().TeleportTo({x: 0, y: 0.3, z: 0}, 0, true); }, 2000);
-        };
-      }, 1000); };
+      });
     }
+
   </script>
   <body>
   <a-scene>
