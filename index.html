@@ -1,4 +1,5 @@
-<html android-bundle="https://murder-party.firer.at/bundles/android.banter" windows-bundle="https://murder-party.firer.at/bundles/windows.banter">
+<html> 
+  <!-- android-bundle="https://murder-party.firer.at/bundles/android.banter" windows-bundle="https://murder-party.firer.at/bundles/windows.banter" -->
   <!-- FOGGY VERSION android-bundle="https://murder-party.firer.at/bundles/foggy/android.banter" windows-bundle="https://murder-party.firer.at/bundles/foggy/windows.banter" -->
   <!-- NOFOG VERSION android-bundle="https://murder-party.firer.at/bundles/nofog/android.banter" windows-bundle="https://murder-party.firer.at/bundles/nofog/windows.banter" -->
   <head>
@@ -56,8 +57,8 @@
 
   </script>
   <body>
-  <a-scene sq-guestsallowed="enabled: false" >
-    
+  <a-scene id="ascene" sq-assetbundle="android: https://murder-party.firer.at/bundles/android.banter;                
+                             desktop: https://murder-party.firer.at/bundles/windows.banter" sq-guestsallowed="enabled: false" embedded>  
     <!-- Screen for Movies/Screencast -->     
   <!--    -->   <script src="https://firer.at/scripts/firescreenv2.js" mipmaps="0" pixelsperunit="1300" 
                 website="https://murder-party.firer.at/?1"
