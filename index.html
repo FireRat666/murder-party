@@ -116,6 +116,8 @@
     if(window.isBanter) {
       let thiswaitingforunity = true; var delaythinginterval;
       if (thiswaitingforunity) { 
+
+
         // delaythinginterval = setInterval(function() {
         //   if (BS.BanterScene.GetInstance().unityLoaded) { 
         //     thiswaitingforunity = false; clearInterval(delaythinginterval); 
@@ -136,6 +138,104 @@
         //     }, 3000);
         //   };
         // }, 1000); 
+
+  delaythinginterval = setInterval(async function () {
+    if (BS.BanterScene.GetInstance().unityLoaded) { 
+      console.log("Unity is loaded. Proceeding...");
+      thiswaitingforunity = false; 
+      clearInterval(delaythinginterval);
+
+      setTimeout(async () => {
+        try {
+          let firebrowserthing = await BS.BanterScene.GetInstance().Find(`MyBrowser1`);
+          if (!firebrowserthing) {
+            console.error("Failed to find 'MyBrowser1'. Exiting...");
+            return;
+          }
+
+          console.log("Found MyBrowser1:", firebrowserthing);
+          firebrowserthing.On("browser-message", (e) => {
+            console.log("Received message from the webpage:", e.detail);
+
+            if (e.detail === "hyperbeamclick") {
+              setTimeout(async () => {
+                try {
+                  let thisfirebrowser = firebrowserthing.GetComponent(BS.ComponentType.BanterBrowser);
+                  if (!thisfirebrowser) {
+                    console.error("Failed to get BanterBrowser component.");
+                    return;
+                  }
+
+                  console.log("Executing first set of actions...");
+                  thisfirebrowser.RunActions(JSON.stringify({
+                    "actions": [{
+                      "actionType": "runscript",
+                      "strparam1": `
+                        try {
+                          const checkbox = document.querySelector('.p-checkbox-box[role="checkbox"]');
+                          const joinButton = document.querySelector('.footer_3Yiou .joinBtn_1TAU6');
+                          if (checkbox) checkbox.click();
+                          if (joinButton) {
+                            const observer = new MutationObserver(() => {
+                              if (!joinButton.classList.contains('p-disabled')) {
+                                joinButton.click();
+                                observer.disconnect();
+                                setTimeout(() => {
+                                  const skipButton = document.querySelector('.dialog-secondary-btn');
+                                  if (skipButton) skipButton.click();
+                                }, 3000);
+                              }
+                            });
+                            observer.observe(joinButton, { attributes: true, attributeFilter: ['class'] });
+                          }
+                        } catch (err) {
+                          console.error("Script Execution Error:", err);
+                        }
+                      `
+                    }]
+                  }));
+
+                  setTimeout(async () => {
+                    try {
+                      console.log("Executing second set of actions...");
+                      thisfirebrowser.RunActions(JSON.stringify({
+                        "actions": [{
+                          "actionType": "runscript",
+                          "strparam1": `
+                            try {
+                              var fullscreenButton = document.querySelector('.p-button.p-component.tu-button.btn-tertiary.btn_2YRyp svg path[d^="M3 3h6.429"]');
+                              if (fullscreenButton) fullscreenButton.closest('button').click();
+                              setTimeout(() => {
+                                var chatButton = document.querySelector('.p-button.p-component.tu-button.btn-tertiary.fsChatBtn_2cCyy svg path[d^="M22 22h-2V2h2v20zM2 11h12.17"]');
+                                if (chatButton) chatButton.closest('button').click();
+                              }, 3500);
+                            } catch (err) {
+                              console.error("Script Execution Error:", err);
+                            }
+                          `
+                        }]
+                      }));
+                    } catch (err) {
+                      console.error("Error executing second action:", err);
+                    }
+                  }, 3000);
+
+                } catch (err) {
+                  console.error("Error processing hyperbeamclick:", err);
+                }
+              }, 3000);
+            }
+          });
+        } catch (err) {
+          console.error("Error setting up browser-message listener:", err);
+        }
+      }, 3000);
+    }
+  }, 1000);
+
+
+
+
       };
     }
 
